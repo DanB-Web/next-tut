@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Outputs only the files necessary for prod (reduce Docker image size)
   output: 'standalone',
   experimental: {
     serverActions: {
