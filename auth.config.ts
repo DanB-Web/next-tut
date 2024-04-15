@@ -4,6 +4,7 @@ export const authConfig = {
   pages: {
     signIn: '/login',
   },
+  secret: 'dummySecretForGithubActionBuild',
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
