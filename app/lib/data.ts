@@ -239,3 +239,17 @@ export async function getUser(email: string) {
     throw new Error('Failed to fetch user.');
   }
 }
+
+export async function getJson(message: string) {
+  noStore();
+  try {
+    const data = await fetch(
+      'https://jsonplaceholder.typicode.com/todos/1',
+    ).then((response) => response.json());
+    console.log(message, data);
+    return data;
+  } catch (e) {
+    console.error('Failed to fetch 3rd party JSON');
+    throw new Error('Fai;ed to fetch 3rd party JSON');
+  }
+}

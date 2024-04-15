@@ -1,7 +1,8 @@
 import { generateYAxis } from '@/app/lib/utils';
 import { CalendarIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
-import { fetchRevenue } from '@/app/lib/data';
+import { fetchRevenue, getJson } from '@/app/lib/data';
+import JsonWrapper from './json';
 
 // This component is representational only.
 // For data visualization UI, check out:
@@ -16,6 +17,8 @@ export default async function RevenueChart() {
 
   const { yAxisLabels, topLabel } = generateYAxis(revenue);
 
+  await getJson('server side data');
+
   if (!revenue || revenue.length === 0) {
     return <p className="mt-4 text-gray-400">No data available.</p>;
   }
@@ -25,7 +28,7 @@ export default async function RevenueChart() {
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Recent Revenue
       </h2>
-      {/* NOTE: comment in this code when you get to this point in the course */}
+      <JsonWrapper />
       <div className="rounded-xl bg-gray-50 p-4">
         <div className="mt-0 grid grid-cols-12 items-end gap-2 rounded-md bg-white p-4 sm:grid-cols-13 md:gap-4">
           <div
